@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "target": "es2015",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": "./typing",
+    "rootDir": "./src",
+    "declaration": true,
+    "sourceMap": true,
+    "lib": ["dom", "es6"],
+    "noImplicitThis": true,
+    "noImplicitAny":true,
+    "jsx": "preserve"
+  }
+}
