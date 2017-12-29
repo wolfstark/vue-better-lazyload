@@ -4,8 +4,7 @@ var webpack = require("webpack");
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    publicPath: "/dist/",
+    path: path.resolve(__dirname, process.argv[2]),
     filename: "vue-better-lazyload.js"
   },
   module: {
@@ -25,11 +24,7 @@ module.exports = {
             loader: "babel-loader"
           },
           {
-            loader: "ts-loader",
-            options: {
-              appendTsSuffixTo: [/\.ts\.vue$/],
-              appendTsxSuffixTo: [/\.tsx\.vue$/]
-            }
+            loader: "ts-loader"
           }
         ],
         exclude: /node_modules/
@@ -51,27 +46,12 @@ module.exports = {
   resolve: {
     extensions: ["*", ".js", ".vue", ".json", "tsx", "ts"]
   },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true,
-    overlay: true
-  },
   performance: {
     hints: false
   },
-  devtool: "#eval-source-map",
-  plugins: [new webpack.optimize.ModuleConcatenationPlugin()]
-};
-
-if (process.env.NODE_ENV === "production") {
-  module.exports.devtool = "#source-map";
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: '"production"'
-      }
-    }),
+  devtool: "#source-map",
+  plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
@@ -81,5 +61,5 @@ if (process.env.NODE_ENV === "production") {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
-  ]);
-}
+  ]
+};

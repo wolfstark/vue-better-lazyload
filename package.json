@@ -5,7 +5,9 @@
   "author": "wangxiang <q1038999405@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "node build.js"
+    "build:dist": "node build.js ./dist",
+    "build:examples": "node build.js ./examples/src",
+    "build": "yarn build:dist & yarn build:examples"
   },
   "browserslist": [
     "> 1%",
@@ -35,7 +37,6 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.24.1",
     "chalk": "^2.3.0",
-    "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",
     "node-sass": "^4.5.3",
@@ -43,8 +44,7 @@
     "sass-loader": "^6.0.6",
     "ts-loader": "^3.2.0",
     "typescript": "^2.6.2",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack": "^3.6.0"
   },
   "typings": "src/typings/index.d.ts"
 }

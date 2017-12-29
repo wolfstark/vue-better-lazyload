@@ -3,7 +3,6 @@ const webpackConfig = require("./webpack.config");
 const ora = require('ora')
 const chalk = require('chalk')
 
-
 const spinner = ora("building for production...");
 spinner.start();
 webpack(webpackConfig, (err, stats) => {

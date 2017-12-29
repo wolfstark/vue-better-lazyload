@@ -8,9 +8,14 @@
     "rootDir": "./src",
     "declaration": true,
     "sourceMap": true,
-    "lib": ["dom", "es6"],
+    "lib": [
+      "dom",
+      "es6"
+    ],
     "noImplicitThis": true,
-    "noImplicitAny":true,
-    "jsx": "preserve"
+    "noImplicitAny": true,
+    "jsx": "preserve",
+    "isolatedModules": true,
+    "experimentalDecorators": true
   }
 }
