@@ -1,5 +1,7 @@
-export interface VueComponent {
-    render: () => any;
+export interface Vue {
+    component: (name: string, component: object) => void;
 }
-declare const lazyloadComponent: VueComponent;
-export default lazyloadComponent;
+declare const lazyloadPlugin: {
+    install(Vue: Vue, options?: {}): void;
+};
+export default lazyloadPlugin;

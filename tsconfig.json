@@ -10,12 +10,19 @@
     "sourceMap": true,
     "lib": [
       "dom",
-      "es6"
+      "es2015",
+      "es2015.promise"
     ],
     "noImplicitThis": true,
     "noImplicitAny": true,
     "jsx": "preserve",
-    "isolatedModules": true,
-    "experimentalDecorators": true
-  }
+    "experimentalDecorators": true,
+    "pretty": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

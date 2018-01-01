@@ -19,6 +19,12 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
+        exclude: /node_modules/,
+        enforce: "pre",
+        loader: "tslint-loader"
+      },
+      {
+        test: /\.tsx?$/,
         use: [
           {
             loader: "babel-loader"
@@ -30,7 +36,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: "babel-loader",
         exclude: /node_modules/
       },
@@ -44,7 +50,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ["*", ".js", ".vue", ".json", "tsx", "ts"]
+    extensions: [".js", ".jsx", ".json", ".ts", ".tsx"]
   },
   performance: {
     hints: false

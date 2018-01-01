@@ -1,1 +1,5 @@
-export default {};
+export default {
+  mounted () {
+    console.log(3)
+  }
+}
