@@ -5,7 +5,10 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, process.argv[2]),
-    filename: "vue-better-lazyload.js"
+    filename: "vue-better-lazyload.js",
+    libraryTarget: "umd",
+    umdNamedDefine: true,
+    library: "vue-better-lazyload"
   },
   module: {
     rules: [
@@ -14,8 +17,8 @@ module.exports = {
         use: ["css-loader"]
       },
       {
-        test: /\.scss$/,
-        use: ["css-loader", "sass-loader"]
+        test: /\.less$/,
+        use: ["css-loader", "less-loader"]
       },
       {
         test: /\.tsx?$/,
@@ -55,15 +58,23 @@ module.exports = {
   performance: {
     hints: false
   },
+  externals: {
+    vue: {
+      root: "Vue",
+      commonjs: "vue",
+      commonjs2: "vue",
+      amd: "vue"
+    }
+  },
   devtool: "#source-map",
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   sourceMap: true,
+    //   compress: {
+    //     warnings: false
+    //   }
+    // }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })

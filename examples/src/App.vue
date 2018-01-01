@@ -42,8 +42,8 @@
 </template>
 <script>
 import ListA from "./components/list-a.vue";
-import ListB from "./components/list-B.vue";
-import ListC from "./components/list-c.vue";
+// import ListB from "./components/list-B.vue";
+// import ListC from "./components/list-c.vue";
 
 const IMGS = [
   "http://covteam.u.qiniudn.com/test16.jpg",
@@ -119,23 +119,14 @@ export default {
     };
   },
   created() {
-    this.$Lazyload.config({
-      // loading: 'http://covteam.u.qiniudn.com/test19.jpg'
-    });
-    this.$Lazyload.$on("loaded", this.handler);
-    this.$Lazyload.$once("error", ({ el }) => {
-      console.log("once error");
-      // console.log('from emit error')
-    });
     setTimeout(() => {
       this.list = getList(IMGS); // getAvatarList()
     }, 1000);
-    console.log(this.$Lazyload);
   },
   components: {
     ListA,
-    ListB,
-    ListC
+    // ListB,
+    // ListC
   },
   mounted() {
     window.aa = this.$Lazyload;

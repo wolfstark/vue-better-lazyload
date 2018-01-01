@@ -1,8 +1,5 @@
 import LazyComponent from './lazyload-component'
-
-export interface Vue {
-  component: (name: string,component: object) => void,
-}
+import {VueConstructor} from 'vue'
 
 const lazyloadPlugin = {
   /**
@@ -10,7 +7,7 @@ const lazyloadPlugin = {
    * @param  {Vue} Vue
    * @param  {object} options  lazyload options
    */
-  install (Vue: Vue, options = {}) {
+  install (Vue: VueConstructor, options = {}) {
     Vue.component('VLazyload', LazyComponent)
   }
 }
