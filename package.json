@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build:dist": "node build.js ./dist",
-    "build:examples": "cp -rf ./dist/* ./examples/src",
+    "build:examples": "cp -rv ./dist/ ./examples/src/",
     "build": "yarn build:dist && yarn build:examples"
   },
   "browserslist": [
