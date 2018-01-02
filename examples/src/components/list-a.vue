@@ -1,20 +1,19 @@
 <template>
   <div class="img-list">
-    <ul>
-      <!-- <transition-group name="flip-list" tag="ul"> -->
-      <li :key="index"
-          v-for="(img,index) in list"
+    <transition-group name="flip-list"
+                      tag="ul">
+      <li :key="img.id"
+          v-for="img in list"
           @click="delMe(img)">
         <VLazyload>
-          <img :data="img.src"
+          <img :src="img.src"
                @error="errorHandler"
                class="lazy-img-fadein"
                width="100%"
                height="400">
         </VLazyload>
       </li>
-    </ul>
-    <!-- </transition-group> -->
+    </transition-group>
   </div>
 </template>
 

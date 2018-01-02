@@ -1,7 +1,5 @@
-export interface Vue {
-    component: (name: string, component: object) => void;
-}
+import Vue, { VueConstructor } from 'vue';
 declare const lazyloadPlugin: {
-    install(Vue: Vue, options?: {}): void;
+    install(Vue: VueConstructor<Vue>, options?: {}): void;
 };
 export default lazyloadPlugin;

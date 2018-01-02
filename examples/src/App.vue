@@ -27,16 +27,14 @@
       </div>
     </div>
     <div class="content">
-      <transition name="in-out-translate-fade"
-                  mode="out-in">
+      <!-- <transition name="in-out-translate-fade"
+                  mode="out-in"> -->
         <list-a :list="list"
-                v-if="state === 'a'"
                 @delete="deleteAction"></list-a>
-        <list-b :list="list"
+        <!-- <list-b :list="list"
                 v-else
-                @delete="deleteAction"></list-b>
-        <!-- <list-c :list="list" v-else></list-c> -->
-      </transition>
+                @delete="deleteAction"></list-b> -->
+      <!-- </transition> -->
     </div>
   </div>
 </template>
@@ -124,7 +122,7 @@ export default {
     }, 1000);
   },
   components: {
-    ListA,
+    ListA
     // ListB,
     // ListC
   },
