@@ -14,11 +14,11 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ["css-loader"]
+        use: ["style-loader","css-loader"]
       },
       {
         test: /\.less$/,
-        use: ["css-loader", "less-loader"]
+        use: ["style-loader","css-loader", "less-loader"]
       },
       {
         test: /\.tsx?$/,

@@ -5,7 +5,7 @@
       <li :key="img.id"
           v-for="img in list"
           @click="delMe(img)">
-        <VLazyload>
+        <VLazyload height="10rem">
           <img :src="img.src"
                @error="errorHandler"
                class="lazy-img-fadein"
