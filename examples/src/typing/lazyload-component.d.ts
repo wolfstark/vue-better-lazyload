@@ -1,6 +1,9 @@
 import './style.less';
-import Vue, { VueConstructor } from 'vue';
-declare const _default: VueConstructor<{
-    height: string;
-} & Vue>;
-export default _default;
+import Vue, { VNode } from 'vue';
+import { stateEnum } from './constant';
+export default class VLazyLoad extends Vue {
+    state: stateEnum;
+    $container: object;
+    render(): VNode;
+    mounted(): void;
+}

@@ -1,28 +1,35 @@
 import './style.less'
 
-import Vue, { VueConstructor } from 'vue'
+// import { Component, Prop } from "vue-property-decorator";
+import Component from 'vue-class-component'
+import Vue, { VNode } from 'vue'
 
 import { stateEnum } from './constant'
-
-export default Vue.extend({
-  data () {
-    return {
-      state: stateEnum.loading // loading,success,error
-    }
-  },
+import scrollParent from './scroll-parent'
+import Core from './core'
+import Container from './container'
+// export interface ComponentInstance extends Vue {
+//   $container: Window | HTMLElement;
+// }
+const core = new Core()
+@Component({
   props: {
     height: String
-  },
-  mounted () {
-    console.log(3)
-  },
+  }
+})
+export default class VLazyLoad extends Vue {
+  // @Prop(String) height:string;
+
+  state = stateEnum.loading // loading,success,error
+  $container: Container
+
   render () {
-    switch (this.$data.state) {
+    switch (this.state) {
       case stateEnum.loading:
         return this.$slots.loading ? (
           this.$slots.loading[0]
         ) : (
-          <div style={{ height: this.height }} class='lazyload-mask'>
+          <div style={{ height: this.$props.height }} class='lazyload-mask'>
             <div class='lazyload-spinner'>
               <svg viewBox='25 25 50 50' class='circular'>
                 <circle cx='50' cy='50' r='20' fill='none' class='path' />
@@ -36,4 +43,50 @@ export default Vue.extend({
         return this.$slots.default[0]
     }
   }
-})
+  mounted () {
+    this.$container = new Container(scrollParent(this.$el))
+    core.addListener(this)
+    core.addContainer(this.$container)
+    this.$nextTick()
+  }
+}
+// export interface MyComponent extends Vue {
+//   $container: HTMLElement|Window
+//   $el:HTMLElement
+//   onClick (): void
+// }
+
+// export default {
+//   data() {
+//     return {
+//       state: stateEnum.loading,
+//       $container: {}
+//     };
+//   },
+//   props: {
+//     height: String
+//   },
+//   mounted() {
+//     this.$container = scrollParent(this.$el);
+//   },
+//   render() {
+//     switch (this.$data.state) {
+//       case stateEnum.loading:
+//         return this.$slots.loading ? (
+//           this.$slots.loading[0]
+//         ) : (
+//           <div style={{ height: this.height }} class="lazyload-mask">
+//             <div class="lazyload-spinner">
+//               <svg viewBox="25 25 50 50" class="circular">
+//                 <circle cx="50" cy="50" r="20" fill="none" class="path" />
+//               </svg>
+//             </div>
+//           </div>
+//         );
+//       case stateEnum.error:
+//         return this.$slots.error ? this.$slots.error[0] : <div>加载失败</div>;
+//       default:
+//         return this.$slots.default[0];
+//     }
+//   }
+// } as ComponentOptions<MyComponent>;

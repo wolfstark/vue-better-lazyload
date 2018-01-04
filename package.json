@@ -48,11 +48,17 @@
     "tslint-config-standard": "^7.0.0",
     "tslint-loader": "^3.5.3",
     "typescript": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.1.5",
     "vue": "^2.5.13",
     "webpack": "^3.6.0"
   },
   "typings": "src/typings/index.d.ts",
   "peerDependencies": {
     "vue": "^2.5.13"
+  },
+  "dependencies": {
+    "lodash.throttle": "^4.1.1",
+    "vue-class-component": "^6.1.2",
+    "vue-property-decorator": "^6.0.0"
   }
 }
