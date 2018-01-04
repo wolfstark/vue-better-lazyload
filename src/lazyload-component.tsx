@@ -48,12 +48,17 @@ export default class VLazyLoad extends Vue {
     this.container = new Container(scrollParent(this.$el))
     core.addListener(this)
     core.addContainer(this.container)
+    console.log(333)
     this.$nextTick(() => {
       if (checkVisible(this))this.load()
+      console.log(checkVisible(this),33)
     })
   }
   load () {
-
+    this.getTagName()
+  }
+  getTagName () {
+    console.log(this.$slots.default[0])
   }
 }
 // export interface MyComponent extends Vue {

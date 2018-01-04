@@ -1,10 +1,10 @@
 import VLazyLoad from './lazyload-component'
 
-export default function checkVisible (listener: VLazyLoad) {
+export default function checkVisible (listener: VLazyLoad): boolean {
   if (listener.container.$el === window) {
-    checkViewVisible(listener)
+    return checkViewVisible(listener)
   } else {
-    checkContainerVisible(listener)
+    return checkContainerVisible(listener)
   }
 }
 function checkContainerVisible (listener: VLazyLoad) {
@@ -15,9 +15,9 @@ function checkContainerVisible (listener: VLazyLoad) {
   const containerHeight = containerRect.height
   const containerWidth = containerRect.width
 
-  rect.top = rect.top - containerRect.top
-  rect.left = rect.left - containerRect.left
-  computeVisible({ ...rect, containerHeight, containerWidth })
+  const top = rect.top - containerRect.top
+  const left = rect.left - containerRect.left
+  return computeVisible({ top, left, containerHeight, containerWidth })
 }
 function checkViewVisible (listener: VLazyLoad) {
   const rect = listener.$el.getBoundingClientRect()
@@ -25,7 +25,7 @@ function checkViewVisible (listener: VLazyLoad) {
   const containerHeight = window.innerHeight
   const containerWidth = window.innerWidth
 
-  computeVisible({ ...rect, containerHeight, containerWidth })
+  return computeVisible({ ...rect, containerHeight, containerWidth })
 }
 function computeVisible ({
   top,

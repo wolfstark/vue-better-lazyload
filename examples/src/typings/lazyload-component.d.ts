@@ -4,7 +4,9 @@ import { stateEnum } from './constant';
 import Container from './container';
 export default class VLazyLoad extends Vue {
     state: stateEnum;
-    $container: Container;
+    container: Container;
     render(): VNode;
     mounted(): void;
+    load(): void;
+    getTagName(): void;
 }
