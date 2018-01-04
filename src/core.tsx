@@ -1,8 +1,10 @@
-import VLazyLoad from './lazyload-component'
-import Container from './container'
-import { on, off } from './event'
 import throttle from 'lodash.throttle'
+
 import checkVisible from './check-visible'
+import Container from './container'
+import { off, on } from './event'
+import VLazyLoad from './lazyload-component'
+
 export default class Core {
   listenerQueue: Array<VLazyLoad> = []
   containerQueue: Array<Container>= []
@@ -30,7 +32,7 @@ export default class Core {
   }
   lazyLoadHandler () {
     this.listenerQueue.forEach(listener => {
-      if (checkVisible(listener.$el)) listener.load()
+      if (checkVisible(listener)) listener.load()
     })
   }
 }

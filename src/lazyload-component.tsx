@@ -8,7 +8,7 @@ import { stateEnum } from './constant'
 import scrollParent from './scroll-parent'
 import Core from './core'
 import Container from './container'
-import checkVisible from './check-visible';
+import checkVisible from './check-visible'
 // export interface ComponentInstance extends Vue {
 //   $container: Window | HTMLElement;
 // }
@@ -48,11 +48,11 @@ export default class VLazyLoad extends Vue {
     this.container = new Container(scrollParent(this.$el))
     core.addListener(this)
     core.addContainer(this.container)
-    this.$nextTick(()=> {
-      if(checkVisible(this.$el))this.load()
+    this.$nextTick(() => {
+      if (checkVisible(this))this.load()
     })
   }
-  load() {
+  load () {
 
   }
 }
