@@ -249,12 +249,9 @@ body,
   }
 }
 
-.lazy-img-fadein[lazy="loaded"] {
-  -webkit-animation-duration: 1s;
+.lazy-img-fadein {
   animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
 }
 

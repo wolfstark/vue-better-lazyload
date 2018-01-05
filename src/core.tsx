@@ -6,7 +6,12 @@ import { off, on } from './event'
 import VLazyLoad from './lazyload-component'
 import ImageLoader from './image-loader'
 
+export interface Options {
+  retry: number,
+  wait: number
+}
 export default class Core {
+  private static instance: Core
   listenerQueue: Array<VLazyLoad> = []
   containerQueue: Array<Container> = []
   eventList: Array<string> = [
@@ -18,9 +23,12 @@ export default class Core {
     'touchmove'
   ]
   imageLoader: ImageLoader
-  constructor () {
-    this.lazyLoadHandler = throttle(this.lazyLoadHandler, 200)
-    this.imageLoader = new ImageLoader(3)
+  constructor (options?: Options) {
+    if (Core.instance) return Core.instance
+    else Core.instance = this
+
+    this.lazyLoadHandler = throttle(this.lazyLoadHandler, 0)
+    this.imageLoader = new ImageLoader(options.retry)
   }
   addListener (listener: VLazyLoad) {
     this.listenerQueue.push(listener)
@@ -69,7 +77,7 @@ export default class Core {
   }
   lazyLoadHandler () {
     this.listenerQueue.forEach(listener => {
-      if (checkVisible(listener)) listener.load()
+      if (!listener.lock && checkVisible(listener)) listener.load()
     })
   }
 }

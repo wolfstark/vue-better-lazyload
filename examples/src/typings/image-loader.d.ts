@@ -10,5 +10,7 @@ export default class ImageLoader {
     cache: Cache;
     constructor(retry: number);
     load(src: string): Promise<{}>;
+    preloadImage(src: string, resolve: () => void, reject: () => void): void;
+    isOverLimit(src: string): boolean;
     mountCache(src: string): void;
 }

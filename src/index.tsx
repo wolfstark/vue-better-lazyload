@@ -1,17 +1,17 @@
-import LazyComponent from './lazyload-component'
-import Vue,{ VueConstructor } from 'vue'
+import Vue, { VueConstructor } from 'vue'
 
-// export interface VueConstructor {
-//   component: (name: string,component: object) => void,
-// }
+import Core from './core'
+import LazyComponent from './lazyload-component'
 
 const lazyloadPlugin = {
   /**
-   * install function
-   * @param  {VueConstructor} Vue
-   * @param  {object} options  lazyload options
+   *
+   * @param {VueConstructor} Vue
+   * @param {any} [options={}]
    */
-  install (Vue: VueConstructor, options = {}) {
+  install (Vue: VueConstructor, options = { retry: 3 ,wait: 200 }) {
+    // tslint:disable-next-line:no-unused-expression
+    new Core(options)
     Vue.component('VLazyload', LazyComponent)
   }
 }
