@@ -1,3 +1,16 @@
+<template>
+  <div class='lazyload-mask'>
+    <div class='lazyload-spinner'>
+      <svg viewBox='25 25 50 50' class='circular'>
+        <circle cx='50' cy='50' r='20' fill='none' class='path' />
+      </svg>
+    </div>
+  </div>
+</template>
+<script>
+export default {};
+</script>
+<style lang="scss">
 .lazyload-mask {
   position: relative;
   z-index: 1;
@@ -47,3 +60,4 @@
     stroke-dashoffset: -2.4rem;
   }
 }
+</style>

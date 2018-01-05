@@ -201,6 +201,7 @@ body,
   display: flex;
   flex-wrap: wrap;
   list-style: none;
+  font-size: 0;
 }
 
 .img-list ul li {

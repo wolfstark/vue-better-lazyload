@@ -1,7 +1,7 @@
 {
   "name": "vue-better-lazyload",
   "description": "A Vue.js plugin for lazyload your Image , Component or anything in your application",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "wangxiang <q1038999405@gmail.com>",
   "license": "MIT",
   "main": "dist/vue-better-lazyload.js",
@@ -9,9 +9,10 @@
   "scripts": {
     "build:umd": "node build.js",
     "build:examples": "cp -rv ./dist/ ./examples/src/",
+    "upgrade:examples": "cd ./examples && yarn upgrade vue-better-lazyload",
     "build": "yarn build:umd && yarn build:examples",
     "prepublish": "yarn build:umd",
-    "preversion": "yarn build:umd"
+    "postpublish": "yarn upgrade:examples"
   },
   "engines": {
     "node": ">=6.0.0"
@@ -31,7 +32,6 @@
   },
   "devDependencies": {
     "@types/lodash.throttle": "^4.1.3",
-    "@types/vue": "^2.0.0",
     "babel-core": "^6.26.0",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.2",

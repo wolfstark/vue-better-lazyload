@@ -2,7 +2,6 @@ import Vue, { VueConstructor, Component, ComponentOptions } from 'vue'
 
 import Core from './core'
 import LazyComponent from './lazyload-component'
-import Loading from './loading'
 import DefaultComponent from './default-component'
 import { stateEnum } from './constant'
 
