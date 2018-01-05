@@ -1,6 +1,4 @@
-import './style.less'
-
-import Vue,{ VNode } from 'vue'
+import Vue, { VNode } from 'vue'
 import Component from 'vue-class-component'
 
 import checkVisible from './check-visible'
@@ -11,37 +9,17 @@ import scrollParent from './scroll-parent'
 
 @Component({
   props: {
-    height: String
+    height: String,
+    [stateEnum.loaded]: Object,
+    [stateEnum.error]: Object
   }
 })
 export default class VLazyLoad extends Vue {
-  // @Prop(String) height:string;
-
-  state = stateEnum.loading // loading,success,error
+  state = stateEnum.loading // loading,loaded,error
   container: Container
   core: Core
   lock: boolean
 
-  render () {
-    switch (this.state) {
-      case stateEnum.loading:
-        return this.$slots.loading ? (
-          this.$slots.loading[0]
-        ) : (
-          <div style={{ height: this.$props.height }} class='lazyload-mask'>
-            <div class='lazyload-spinner'>
-              <svg viewBox='25 25 50 50' class='circular'>
-                <circle cx='50' cy='50' r='20' fill='none' class='path' />
-              </svg>
-            </div>
-          </div>
-        )
-      case stateEnum.error:
-        return this.$slots.error ? this.$slots.error[0] : <div style={{ height: this.$props.height }}>加载失败</div>
-      default:
-        return this.$slots.default[0]
-    }
-  }
   created () {
     this.core = new Core()
   }
@@ -52,6 +30,20 @@ export default class VLazyLoad extends Vue {
     this.$nextTick(() => {
       if (checkVisible(this)) this.load()
     })
+  }
+  render () {
+    switch (this.state) {
+      case stateEnum.loading:
+        return this.getStateComponent(stateEnum.loading)
+      case stateEnum.error:
+        return this.getStateComponent(stateEnum.error)
+      default:
+        return this.$slots.default[0]
+    }
+  }
+  getStateComponent (state: stateEnum) {
+    const Component = this.core.options[state]
+    return this.$slots[state] ? this.$slots[state][0] : <Component />
   }
   load () {
     if (this.isImage()) {

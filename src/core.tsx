@@ -5,13 +5,13 @@ import Container from './container'
 import { off, on } from './event'
 import VLazyLoad from './lazyload-component'
 import ImageLoader from './image-loader'
+import { Component } from 'vue/types/options'
+import { Options } from './index'
 
-export interface Options {
-  retry: number,
-  wait: number
-}
 export default class Core {
   private static instance: Core
+  options: Options
+  imageLoader: ImageLoader
   listenerQueue: Array<VLazyLoad> = []
   containerQueue: Array<Container> = []
   eventList: Array<string> = [
@@ -22,12 +22,13 @@ export default class Core {
     'transitionend',
     'touchmove'
   ]
-  imageLoader: ImageLoader
+
   constructor (options?: Options) {
     if (Core.instance) return Core.instance
     else Core.instance = this
 
-    this.lazyLoadHandler = throttle(this.lazyLoadHandler, 0)
+    this.options = options
+    this.lazyLoadHandler = throttle(this.lazyLoadHandler, options.wait)
     this.imageLoader = new ImageLoader(options.retry)
   }
   addListener (listener: VLazyLoad) {

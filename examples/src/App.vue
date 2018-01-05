@@ -224,30 +224,7 @@ body,
   line-height: 2;
 }
 
-.img-list ul li img {
-  width: 100%;
-  min-height: 10rem;
-}
 
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
 
 .lazy-img-fadein {
   animation-duration: 1s;
@@ -263,16 +240,6 @@ body,
 .lazy-img-fadein[lazy-progressive="true"] {
   width: 100% !important;
   margin: auto;
-}
-
-.lazy-img-fadein[lazy="error"] {
-  border-radius: 2px;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
 }
 
 .cov-imageviewer {
@@ -297,16 +264,6 @@ body,
   background: rgba(0, 0, 0, 0.67);
 }
 
-.cov-imageviewer-header img {
-  position: fixed;
-  margin: 0 auto;
-  top: 0;
-  width: 100%;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  top: 50%;
-}
 .bg-box {
   height: 0;
   background-size: cover;
@@ -317,21 +274,24 @@ body,
   background-repeat: no-repeat;
   background-position: 50%;
 }
-.bg-box[lazy="loaded"] {
-  background-size: cover;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-}
 
 .bg-box[lazy-progressive="true"] {
   background-size: cover;
   padding-bottom: 100%;
 }
-
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fadeIn-enter-active {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
 .switch-header {
   display: flex;
   justify-content: space-between;

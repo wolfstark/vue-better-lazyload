@@ -5,13 +5,12 @@
       <li :key="img.id"
           v-for="img in list"
           @click="delMe(img)">
-        <VLazyload height="400px">
-          <img :src="img.src"
-               @error="errorHandler"
-               class="lazy-img-fadein"
-               width="100%"
-               height="400">
-        </VLazyload>
+          <!-- <transition enter-active-class="fadeIn-enter-active" leave-active-class="fadeIn-enter-active"> -->
+            <VLazyload :style="{width:'100%',height:'400px'}" class="lazy-img-fadein" height="400px">
+              <img :src="img.src"
+                  @error="errorHandler">
+            </VLazyload>
+          <!-- </transition> -->
       </li>
     </transition-group>
   </div>
