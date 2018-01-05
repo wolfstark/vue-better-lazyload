@@ -24,6 +24,7 @@ export default class ImageLoader {
         return
       }
       if (this.cache[src].retry > this.retry) {
+        console.warn('图片重试次数超过限制')
         reject()
         return
       }

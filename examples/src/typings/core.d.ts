@@ -8,6 +8,8 @@ export default class Core {
     imageLoader: ImageLoader;
     constructor();
     addListener(listener: VLazyLoad): void;
+    removeListener(listener: VLazyLoad): void;
+    removeContainer(listener: VLazyLoad): void;
     addContainer(container: Container): void;
     bindListenerHandle(node: HTMLElement | Window): void;
     removeListenerHandle(node: HTMLElement | Window): void;

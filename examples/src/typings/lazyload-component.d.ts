@@ -9,4 +9,5 @@ export default class VLazyLoad extends Vue {
     mounted(): void;
     load(): void;
     isImage(): boolean;
+    beforeDestroy(): void;
 }

@@ -222,7 +222,7 @@ var ImageLoader = function () {
     }
 
     _createClass(ImageLoader, [{
-        key: "load",
+        key: 'load',
         value: function load(src) {
             var _this = this;
 
@@ -233,6 +233,7 @@ var ImageLoader = function () {
                     return;
                 }
                 if (_this.cache[src].retry > _this.retry) {
+                    console.warn('图片重试次数超过限制');
                     reject();
                     return;
                 }
@@ -248,7 +249,7 @@ var ImageLoader = function () {
             });
         }
     }, {
-        key: "mountCache",
+        key: 'mountCache',
         value: function mountCache(src) {
             if (!this.cache[src]) {
                 this.cache[src] = { loaded: false, retry: 1 };
@@ -287,6 +288,26 @@ var core_Core = function () {
         key: 'addListener',
         value: function addListener(listener) {
             this.listenerQueue.push(listener);
+        }
+    }, {
+        key: 'removeListener',
+        value: function removeListener(listener) {
+            var index = this.listenerQueue.indexOf(listener);
+            if (index !== -1) this.listenerQueue.splice(index, 1);
+            this.removeContainer(listener);
+        }
+    }, {
+        key: 'removeContainer',
+        value: function removeContainer(listener) {
+            var index = this.containerQueue.indexOf(listener.container);
+            var container = this.containerQueue[index];
+            if (index !== -1) {
+                container.listenerCount -= 1;
+                if (container.listenerCount === 0) {
+                    this.removeListenerHandle(container.$el);
+                    this.containerQueue.splice(index, 1);
+                }
+            }
         }
     }, {
         key: 'addContainer',
@@ -458,8 +479,12 @@ var lazyload_component_VLazyLoad = function (_Vue) {
     }, {
         key: "isImage",
         value: function isImage() {
-            console.log(this.$slots.default[0]);
             return this.$slots.default[0].tag === 'img';
+        }
+    }, {
+        key: "beforeDestroy",
+        value: function beforeDestroy() {
+            lazyload_component_core.removeListener(this);
         }
     }]);
 
