@@ -8,5 +8,5 @@ export default class VLazyLoad extends Vue {
     render(): VNode;
     mounted(): void;
     load(): void;
-    getTagName(): void;
+    isImage(): boolean;
 }

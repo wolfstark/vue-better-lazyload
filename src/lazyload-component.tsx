@@ -9,6 +9,7 @@ import scrollParent from './scroll-parent'
 import Core from './core'
 import Container from './container'
 import checkVisible from './check-visible'
+import ImageLoader from './image-loader'
 // export interface ComponentInstance extends Vue {
 //   $container: Window | HTMLElement;
 // }
@@ -48,17 +49,28 @@ export default class VLazyLoad extends Vue {
     this.container = new Container(scrollParent(this.$el))
     core.addListener(this)
     core.addContainer(this.container)
-    console.log(333)
     this.$nextTick(() => {
       if (checkVisible(this))this.load()
-      console.log(checkVisible(this),33)
     })
   }
   load () {
-    this.getTagName()
+    if (this.isImage()) {
+      const src = this.$slots.default[0].data.attrs.src
+
+      core.imageLoader.load(src).then(() => {
+        this.state = stateEnum.loaded
+      }).catch(() => {
+        this.state = stateEnum.error
+      })
+    } else {
+      this.state = stateEnum.loaded
+    }
   }
-  getTagName () {
-    console.log(this.$slots.default[0])
+  isImage () {
+    return this.$slots.default[0].tag === 'img'
+  }
+  beforeDestroy () {
+    core.removeListener(this)
   }
 }
 // export interface MyComponent extends Vue {

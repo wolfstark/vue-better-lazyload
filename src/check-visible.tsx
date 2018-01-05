@@ -17,7 +17,16 @@ function checkContainerVisible (listener: VLazyLoad) {
 
   const top = rect.top - containerRect.top
   const left = rect.left - containerRect.left
-  return computeVisible({ top, left, containerHeight, containerWidth })
+  const { height, width } = rect
+
+  return computeVisible({
+    top,
+    left,
+    height,
+    width,
+    containerHeight,
+    containerWidth
+  })
 }
 function checkViewVisible (listener: VLazyLoad) {
   const rect = listener.$el.getBoundingClientRect()
@@ -31,13 +40,13 @@ function computeVisible ({
   top,
   left,
   height,
-  wdith,
+  width,
   containerHeight,
   containerWidth
 }: any) {
   return (
     top < containerHeight &&
     top + height > 0 &&
-    (left < containerWidth && left + wdith > 0)
+    (left < containerWidth && left + width > 0)
   )
 }
