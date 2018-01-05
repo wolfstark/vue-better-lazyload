@@ -5,7 +5,7 @@ var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, process.argv[2]),
+    path: path.resolve('./dist'),
     filename: "vue-better-lazyload.js",
     libraryTarget: "umd",
     umdNamedDefine: true,
@@ -70,23 +70,23 @@ module.exports = {
   devtool: "#source-map",
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
-    // new UglifyJsPlugin({
-    //   uglifyOptions: {
-    //     compress: {
-    //       // 删除所有的 `console` 语句
-    //       drop_console: true,
-    //       // 内嵌定义了但是只用到一次的变量
-    //       collapse_vars: true,
-    //       // 提取出出现多次但是没有定义成变量去引用的静态值
-    //       reduce_vars: true
-    //     },
-    //     output: {
-    //       beautify: false
-    //     }
-    //   },
-    //   sourceMap: true,
-    //   parallel: true
-    // }),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          // 删除所有的 `console` 语句
+          drop_console: true,
+          // 内嵌定义了但是只用到一次的变量
+          collapse_vars: true,
+          // 提取出出现多次但是没有定义成变量去引用的静态值
+          reduce_vars: true
+        },
+        output: {
+          beautify: false
+        }
+      },
+      sourceMap: true,
+      parallel: true
+    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
