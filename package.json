@@ -1,7 +1,7 @@
 {
   "name": "vue-better-lazyload",
   "description": "A Vue.js plugin for lazyload your Image , Component or anything in your application",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "wangxiang <q1038999405@gmail.com>",
   "license": "MIT",
   "main": "dist/vue-better-lazyload.js",
