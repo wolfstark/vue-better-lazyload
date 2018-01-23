@@ -1,7 +1,7 @@
 {
   "name": "vue-better-lazyload",
   "description": "A Vue.js plugin for lazyload your Image , Component or anything in your application",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "wangxiang <q1038999405@gmail.com>",
   "license": "MIT",
   "main": "dist/vue-better-lazyload.js",
@@ -56,7 +56,7 @@
     "vue": "^2.5.13",
     "webpack": "^3.6.0"
   },
-  "typings": "dist/typings/index.d.ts",
+  "typings": "typings/index.d.ts",
   "peerDependencies": {
     "vue": "^2.5.13"
   },
