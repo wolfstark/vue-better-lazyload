@@ -2726,7 +2726,7 @@ lodash.tail@^4.1.1:
 
 lodash.throttle@^4.1.1:
   version "4.1.1"
-  resolved "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  resolved "http://registry.npm.taobao.org/lodash.throttle/download/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -4598,15 +4598,15 @@ vm-browserify@0.0.4:
     indexof "0.0.1"
 
 vue-better-lazyload@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/vue-better-lazyload/-/vue-better-lazyload-1.0.1.tgz#16d28ce45ef73ae50f9f0bd04a9cc9660ab019ea"
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/vue-better-lazyload/download/vue-better-lazyload-1.0.2.tgz#b560a2d1f98322eddc9a33b77d82400ff16418f0"
   dependencies:
     lodash.throttle "^4.1.1"
     vue-class-component "^6.1.2"
 
 vue-class-component@^6.1.2:
   version "6.1.2"
-  resolved "https://registry.npmjs.org/vue-class-component/-/vue-class-component-6.1.2.tgz#87ac0265b0db71a3f49f10d90e4f69f9be9c2fbd"
+  resolved "http://registry.npm.taobao.org/vue-class-component/download/vue-class-component-6.1.2.tgz#87ac0265b0db71a3f49f10d90e4f69f9be9c2fbd"
 
 vue-hot-reload-api@^2.2.0:
   version "2.2.4"

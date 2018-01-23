@@ -43,7 +43,7 @@ export default class VLazyLoad extends Vue {
   }
   getStateComponent (state: stateEnum) {
     const Component = this.core.options[state]
-    return this.$slots[state] ? this.$slots[state][0] : <Component />
+    return this.$slots[stateEnum[state]] ? this.$slots[stateEnum[state]][0] : <Component />
   }
   load () {
     if (this.isImage()) {

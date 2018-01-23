@@ -4,7 +4,7 @@
     "target": "es2015",
     "module": "esnext",
     "moduleResolution": "node",
-    "outDir": "./typings",
+    "outDir": "../typings",
     "rootDir": "./src",
     "declaration": true,
     "sourceMap": true,
