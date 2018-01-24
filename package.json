@@ -1,0 +1,67 @@
+{
+  "name": "vue-better-lazyload",
+  "description": "A Vue.js plugin for lazyload your Image , Component or anything in your application",
+  "version": "1.0.3",
+  "author": "wangxiang <q1038999405@gmail.com>",
+  "license": "MIT",
+  "main": "dist/vue-better-lazyload.js",
+  "unpkg": "dist/vue-better-lazyload.js",
+  "scripts": {
+    "build:umd": "node build.js",
+    "build:examples": "cp -rv ./dist/ ./examples/src/",
+    "upgrade:examples": "cd ./examples && yarn upgrade vue-better-lazyload",
+    "build": "yarn build:umd && yarn build:examples",
+    "prepublish": "yarn build:umd",
+    "postpublish": "yarn upgrade:examples"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wolfstark/vue-better-lazyload.git"
+  },
+  "keywords": [
+    "vue-lazyload",
+    "vue",
+    "lazyload",
+    "vue-component"
+  ],
+  "bugs": {
+    "url": "https://github.com/wolfstark/vue-better-lazyload/issues"
+  },
+  "devDependencies": {
+    "@types/lodash.throttle": "^4.1.3",
+    "babel-core": "^6.26.0",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "chalk": "^2.3.0",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.4",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "ora": "^1.3.0",
+    "style-loader": "^0.19.1",
+    "ts-loader": "^3.2.0",
+    "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
+    "tslint-loader": "^3.5.3",
+    "typescript": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.1.5",
+    "vue": "^2.5.13",
+    "webpack": "^3.6.0"
+  },
+  "typings": "typings/index.d.ts",
+  "peerDependencies": {
+    "vue": "^2.5.13"
+  },
+  "dependencies": {
+    "lodash.throttle": "^4.1.1",
+    "vue-class-component": "^6.1.2"
+  }
+}
