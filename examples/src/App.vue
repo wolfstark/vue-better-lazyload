@@ -14,10 +14,11 @@
 </template>
 <script>
 const imgList = [
-  "https://cdn.gratisography.com/photos/435H.jpg",
-  "https://cdn.gratisography.com/photos/436H.jpg",
-  "https://cdn.gratisography.com/photos/437H.jpg",
-  "https://cdn.gratisography.com/photos/438H.jpg"
+  "https://s3.cn-north-1.amazonaws.com.cn/cm-prod-bucket/web/public/clothes/suit/l/style_1_2_7_12.png"
+  // "https://cdn.gratisography.com/photos/435H.jpg"
+  // "https://cdn.gratisography.com/photos/436H.jpg",
+  // "https://cdn.gratisography.com/photos/437H.jpg",
+  // "https://cdn.gratisography.com/photos/438H.jpg"
   // "https://cdn.gratisography.com/photos/439H.jpg",
   // "https://cdn.gratisography.com/photos/440H.jpg",
   // "https://cdn.gratisography.com/photos/441H.jpg",

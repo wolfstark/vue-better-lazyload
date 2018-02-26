@@ -7,6 +7,6 @@ export interface Options {
     [state: number]: VueConstructor;
 }
 declare const lazyloadPlugin: {
-    install(Vue: VueConstructor<Vue>, {retry, wait, error, loading}?: Options): void;
+    install(Vue: VueConstructor<Vue>, { retry, wait, error, loading }?: Options): void;
 };
 export default lazyloadPlugin;

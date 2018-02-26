@@ -13,5 +13,6 @@ export default class VLazyLoad extends Vue {
     getStateComponent(state: stateEnum): VNode;
     load(): void;
     isImage(): boolean;
+    showToState(show: boolean): stateEnum.loading | stateEnum.loaded;
     beforeDestroy(): void;
 }

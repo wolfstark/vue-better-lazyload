@@ -34,7 +34,8 @@ function checkViewVisible (listener: VLazyLoad) {
   const containerHeight = window.innerHeight
   const containerWidth = window.innerWidth
 
-  return computeVisible({ ...rect, containerHeight, containerWidth })
+  // return computeVisible({ ...rect, containerHeight, containerWidth })
+  return computeVisible(Object.assign(rect,{ containerHeight, containerWidth }))
 }
 function computeVisible ({
   top,

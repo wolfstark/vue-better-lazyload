@@ -22,14 +22,14 @@ export default {};
 
   .lazyload-spinner {
     top: 50%;
-    margin-top: -0.42rem;
+    margin-top: -25px;
     width: 100%;
     text-align: center;
     position: absolute;
 
     .circular {
-      height: 0.84rem;
-      width: 0.84rem;
+      height: 50px;
+      width: 50px;
       animation: loading-rotate 2s linear infinite;
 
       .path {
