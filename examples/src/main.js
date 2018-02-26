@@ -4,9 +4,12 @@ import router from "./router";
 import "./registerServiceWorker";
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css"; // Ensure you are using css-loader
+import VBLazyload from "vue-better-lazyload";
+import loading from "./components/loading.vue";
 
 Vue.config.productionTip = false;
 Vue.use(Vuetify);
+Vue.use(VBLazyload, { loading });
 
 new Vue({
   router,

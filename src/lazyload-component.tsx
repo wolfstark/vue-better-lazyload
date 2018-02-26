@@ -11,7 +11,16 @@ import scrollParent from './scroll-parent'
   props: {
     height: String,
     [stateEnum.loaded]: Object,
-    [stateEnum.error]: Object
+    [stateEnum.error]: Object,
+    show: {
+      type: Boolean,
+      default: null
+    }
+  },
+  watch: {
+    show (newVal, oldVal) {
+      (this as VLazyLoad).state = (this as VLazyLoad).showToState(newVal)
+    }
   }
 })
 export default class VLazyLoad extends Vue {
@@ -24,12 +33,16 @@ export default class VLazyLoad extends Vue {
     this.core = new Core()
   }
   mounted () {
-    this.container = new Container(scrollParent(this.$el))
-    this.core.addListener(this)
-    this.core.addContainer(this.container)
-    this.$nextTick(() => {
-      if (checkVisible(this)) this.load()
-    })
+    if (this.$props.show === null) {
+      this.container = new Container(scrollParent(this.$el))
+      this.core.addListener(this)
+      this.core.addContainer(this.container)
+      this.$nextTick(() => {
+        if (checkVisible(this)) this.load()
+      })
+    } else {
+      this.state = this.showToState(this.$props.show)
+    }
   }
   render () {
     switch (this.state) {
@@ -43,7 +56,11 @@ export default class VLazyLoad extends Vue {
   }
   getStateComponent (state: stateEnum) {
     const Component = this.core.options[state]
-    return this.$slots[stateEnum[state]] ? this.$slots[stateEnum[state]][0] : <Component />
+    return this.$slots[stateEnum[state]] ? (
+      this.$slots[stateEnum[state]][0]
+    ) : (
+      <Component style={{ height: this.$props.height }} />
+    )
   }
   load () {
     if (this.isImage()) {
@@ -66,6 +83,9 @@ export default class VLazyLoad extends Vue {
   }
   isImage () {
     return this.$slots.default[0].tag === 'img'
+  }
+  showToState (show: boolean) {
+    return show ? stateEnum.loaded : stateEnum.loading
   }
   beforeDestroy () {
     this.core.removeListener(this)
