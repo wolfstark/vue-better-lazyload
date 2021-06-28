@@ -49,11 +49,10 @@ new Vue({
   render: h => h(App)
 });
 
-// page
-
 ```
+
 ``` vue
-// pageA.vue
+<!-- pageA.vue -->
 <template>
   <div class="img-list">
       <li :key="img.id"
