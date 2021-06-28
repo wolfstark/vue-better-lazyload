@@ -27,13 +27,45 @@
 ## Install
 
 ```sh
-yarn install
+npm install vue-better-lazyload
+// or
+yarn add vue-better-lazyload
 ```
 
 ## Usage
 
 ```sh
-yarn build
+// main.js
+import Vue from "vue";
+import App from "./App.vue";
+import Lazyload from "vue-better-lazyload";
+import Loading from "./components/loading.vue";
+import Error from "./components/error.vue";
+
+Vue.use(Lazyload, { loading: Loading, error: Error });
+
+new Vue({
+  el: "#app",
+  render: h => h(App)
+});
+
+// page
+
+```
+``` vue
+// pageA.vue
+<template>
+  <div class="img-list">
+      <li :key="img.id"
+          v-for="img in list"
+          @click="delMe(img)">
+            <VLazyload :style="{width:'100%',height:'400px'}" class="lazy-img-fadein">
+              <img :src="img.src"
+                  @error="errorHandler">
+            </VLazyload>
+      </li>
+  </div>
+</template>
 ```
 
 ## Author
