@@ -52,19 +52,29 @@ new Vue({
 ```
 
 ``` vue
-<!-- pageA.vue -->
+<!-- lazy loading img -->
 <template>
-  <div class="img-list">
-      <li :key="img.id"
-          v-for="img in list"
-          @click="delMe(img)">
-            <VLazyload :style="{width:'100%',height:'400px'}" class="lazy-img-fadein">
-              <img :src="img.src"
-                  @error="errorHandler">
-            </VLazyload>
-      </li>
-  </div>
+    <VLazyload :style="{width:'100%',height:'400px'}" class="lazy-img-fadein">
+      <img :src="src"
+          @error="errorHandler">
+    </VLazyload>
 </template>
+```
+
+``` vue
+<!-- lazy loading component -->
+<template>
+    <VLazyload :style="{width:'100%',height:'400px'}" class="lazy-img-fadein">
+      <GoodList></GoodList>
+    </VLazyload>
+</template>
+<script>
+export default {
+  components:{
+    GoodList:()=>@import("@/components/GoodList")
+  }
+}
+</script>
 ```
 
 ## Author
