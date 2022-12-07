@@ -12,12 +12,6 @@
   version "4.14.91"
   resolved "http://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.91.tgz#794611b28056d16b5436059c6d800b39d573cd3a"
 
-"@types/vue@^2.0.0":
-  version "2.0.0"
-  resolved "http://registry.npm.taobao.org/@types/vue/download/@types/vue-2.0.0.tgz#ec77b3d89591deb9ca5cb052368aa9c32be088e7"
-  dependencies:
-    vue "*"
-
 abbrev@1:
   version "1.1.1"
   resolved "http://registry.npm.taobao.org/abbrev/download/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -2938,8 +2932,8 @@ q@^1.1.2:
   resolved "http://registry.npm.taobao.org/q/download/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
 qs@~6.4.0:
-  version "6.4.0"
-  resolved "http://registry.npm.taobao.org/qs/download/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.1.tgz#2bad97710a5b661c366b378b1e3a44a592ff45e6"
 
 query-string@^4.1.0:
   version "4.3.4"
@@ -3679,7 +3673,7 @@ vue-class-component@^6.1.2:
   version "6.1.2"
   resolved "http://registry.npm.taobao.org/vue-class-component/download/vue-class-component-6.1.2.tgz#87ac0265b0db71a3f49f10d90e4f69f9be9c2fbd"
 
-vue@*, vue@^2.5.13:
+vue@^2.5.13:
   version "2.5.13"
   resolved "http://registry.npm.taobao.org/vue/download/vue-2.5.13.tgz#95bd31e20efcf7a7f39239c9aa6787ce8cf578e1"
 
